@@ -2,14 +2,13 @@
 <html>
 <head>
 <title>Online Shopping</title>
-<!--css-->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/ken-burns.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/animate.min.css" type="text/css" media="all" />
-<!--css-->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css1/style2.css">
 <style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
   width: 1000px;
@@ -19,54 +18,35 @@
 .form {
   position: relative;
   z-index: 1;
-  /*background: #bee5bd;*/
-  /*background-color: transparent;*/
-  background: #fffaf7;
+  background: #fff;
   max-width: 1160px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 25px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+ input{
+    width: 70%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px grey;
+  }
+  input:focus, input:focus-visible{
+    outline-style: none;
+    border: none;
+    border-bottom: solid 1px #000;
+  }
+button {
+  margin-top: 30px;
+  width: 55%;
 }
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  /*background: #50894f;*/
-  background: #5456FF;
-  width: 60%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form button:hover,.form button:active,.form button:focus {
-  /*background: #43A047;*/
-  background: #7A97FF;
-}
-.form .message {
+
+.form p {
   margin: 15px 0 0;
-  color: #435142;
-  font-size: 12px;
 }
-.form .message a {
-  color: #4CAF50;
-  text-decoration: none;
-}
+
 .form .register-form {
   display: none;
 }
@@ -108,9 +88,7 @@
   color: #DD9900;
 }
 body {
-  /*background-image: url(images/login.jpg); */
-  background-color: #7A97FF;
-  font-family: "Roboto", sans-serif;
+  background-color: #F1F7FC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
@@ -124,10 +102,6 @@ body {
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!--js-->
-<!--webfonts-->
-<link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!--webfonts-->
 </head>
 <body>
 
@@ -151,15 +125,15 @@ body {
   				
     			<form class="login-form" action="user-sign-up.php" method="post">
       			
-              <a href = "home.html" class  = "return"><h4> Return to Home Page </h4></a><br><br>
+              <a href = "index.html" class  = "return" style="color: #F58703;"><h3> Return to Home Page </h3></a><br><br>
               <input type="text" placeholder="Enter your full name ( first + middle + last)" name="uname"/>
               <input type="text" placeholder="Enter your email id" name="email" />
       				<input type="password" placeholder="Password (minimum 8 characters)" name="password" />
               <input type="text" placeholder="Enter your contact number" name="phone" />
               <input type="text" placeholder="Enter your Address ( Street + Area + City + Pincode)" name="address" />
       				
-      				<button type="submit" name="submit">create</button>
-      				<p class="message">Already registered? <a href="sign-in.php"><font color='blue'>Sign In</font></a></p>
+      				<button type="submit" name="submit" class = "btn btn-primary">Create</button>
+      				<p>Already registered? <a href="sign-in.php"><font color='blue'>Sign In</font></a></p>
     			</form>
     			
     			<br><br>

@@ -41,7 +41,7 @@
 					{
 						$_SESSION["user"] = $name;
 						echo "<script>window.alert('Record created successfully')
-							  window.location.href='men.php?login=1 & username=$name'</script>";
+							  window.location.href='login_index.php?login=1 & username=$name'</script>";
 					}	
 					else
 					{

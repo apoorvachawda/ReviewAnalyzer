@@ -11,7 +11,7 @@
 	{
 		$_SESSION["user"] = $_GET['username'];
 		$username = $_GET['username'];
-		$pid = $_GET['pid'];
+		$pid = $_GET['pid'];	
 		//$pname = $_GET['pname'];
 
 		$prod = "select * from products where pid='$pid'";
@@ -49,16 +49,16 @@
 		$sql = "insert into reviews (pid, pname, username, email, review, ip) values ('$pid', '$pname', '$username', '$email', '$review', '$ip')";
 		if (mysqli_query($conn, $sql))
 		{
-			echo "review submitted";
 			$_SESSION["user"] = $_GET['username'];
 			echo "<script>window.alert('Review submitted successfully!!')</script>";
-			//window.location.href='review-product.php?login=1 & username={$username}'</script>";
+			// ("Location:review-product.php?login=1 & username={$username} ");
+			echo "<script>window.location.href='review-product.php?login=1 & username={$username}'</script>";
 		}
 		else
 		{
 			$_SESSION["user"] = $_GET['username'];
-			echo "<script>window.alert('Could not submit review')
-			windo.location.href='review-product.php?login=1 & username={$username}'</script>";
+			echo "<script>window.alert('Could not submit review')";
+			// windo.location.href='review-product.php?login=1 & username={$username}'</script>";
 		}
 	}
 ?>

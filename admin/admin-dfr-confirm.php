@@ -7,7 +7,7 @@
 	{
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	$conn = mysqli_connect("localhost","root","");
+	$conn = mysqli_connect("localhost","root","","ita_project");
 	mysqli_select_db($conn,"ita");
 	//$sql = "SELECT * FROM products where pid like '1%' ORDER BY pid "; 
 	$sql = "delete from reviews where rid='$rid'";
@@ -16,14 +16,14 @@
 	if (mysqli_affected_rows($conn)==1) {
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
 				window.alert('Review removed successfully!!')
-				window.location.href='admin-delete-fake-review.php'
+				window.location.href='admin-delete-review.php'
 				</SCRIPT>");
 	}
 	else
 	{
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
 			window.alert('Deletion Error!!')
-			window.location.href='admin-delete-fake-review.php'
+			window.location.href='admin-delete-review.php'
 			</SCRIPT>");
 	}
 ?>

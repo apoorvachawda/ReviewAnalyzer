@@ -6,7 +6,7 @@
 				{
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
 				}
-				mysqli_select_db($conn,"ita");
+				mysqli_select_db($conn,"ita_project");
 				$entry = 1;
 				if(isset($_POST['submit']))
 				{
@@ -26,12 +26,12 @@
 						$_SESSION["user"] = $user;
 						echo ("<SCRIPT LANGUAGE='JavaScript'>
 							window.alert('Welcome {$user}')
-							window.location.href='men.php?login=1'
+							window.location.href='login_index.php?login=1'
 							</SCRIPT>");
 					}
 					else
 					{
-						echo "<script>window.alert('Invlaid Credentials!!')
+						echo "<script>window.alert('Invalid Credentials!!')
 							  window.location.href='sign-in.php'</script>";
 					}
 					

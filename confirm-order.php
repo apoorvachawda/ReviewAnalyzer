@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	$_SESSION["user"] = $_GET['username'];
+	$login = $_GET['login'];
 	include("login_header.php");
 	$conn = mysqli_connect("localhost","root","","ita_project");
 	if (mysqli_connect_errno())
@@ -14,7 +15,6 @@
 		$pid = $_GET['pid'];
 		$username = $_GET['username'];
 		$quantity = $_GET['quantity'];
-
 		$sql = "select * from products where pid = '$pid'";
 		$res = $conn->query($sql);
 		$row = mysqli_fetch_row($res);
@@ -32,13 +32,9 @@
 	<title>Men's Wear</title>
 <style type="text/css">
 	
-	table,tr,td {
-		/*border-style: solid;
-		border-color: grey;
-    	border-collapse: collapse;*/
+	/* table,tr,td {
     	padding: 10px;
     	max-width: 1000px;
-    	/*background-color: #b3f3ef;*/
     	font-family: Helvetica;
     	font-weight: normal;
     	align-items: center;
@@ -68,18 +64,16 @@
 		border-radius: 15px;
 		border-color: #000;
 		border-width: 0px;
-		/*box-shadow: 5px 5px;*/
 		padding: 25px;
 		margin: 5px;
 		text-align: center;
-		/*background-color: #d6ebd9;*/
 		background-color: #7a97ff;
 	}
 
 	div.box img {
 		width: 100%;
 		height: 100%;
-		-webkit-transition-duration: 0.4s; /* Safari */
+		-webkit-transition-duration: 0.4s; 
     	transition-duration: 0.5s;
 	}
 
@@ -91,7 +85,7 @@
 		align-content: center;
 		float: center;
 		background-color: #4CAF50;
-		-webkit-transition-duration: 0.4s; /* Safari */
+		-webkit-transition-duration: 0.4s; 
    	 	transition-duration: 0.4s;
 	}
 
@@ -104,11 +98,10 @@
 		font-family: verdana;
 		font-weight: normal;
 		color: black;
-	}
+	} */
 </style>
 </head>
-<body style = "background: #FFFAF7;">
-	<br><br> 	
+<body>
 	<!--<div class='page'>-->
 		<!--<div class='content'>-->
 		<form action="place-order.php" method="get">
@@ -120,51 +113,65 @@
 			<input type="hidden" name="quantity" value="<?php echo $quantity ?>">
 			<input type="hidden" name="total" value="<?php echo $total ?>">
 			<input type="hidden" name="address" value="<?php echo $row1[4] ?>">
-			<table align="center">
-				<tr>
-					<th rowspan="100">
+			<div class="container d-flex justify-content-center mt-4 shadow" style = "height: 700px;">
+				<div class="row mt-4" style="width: 80%;">
+					<div class="col-md-12">
+						<h3 class = "text-center">Please confirm your order details</h3>
+					</div>
+					<div class="col-md-5">
 						<?php 
 							if($row[1][0]=='1')
-								echo "<div class = 'box'><img src = 'images/men/{$row[4]}' alt = '{$pid}'></div>";
+								echo "<div class = 'text-center'><img src = 'images/men/{$row[4]}' alt = '{$pid}' style = 'width:100%;'><br>{$row[2]}</div>";
 							else if($row[1][0]=='2')
-								 echo "<div class = 'box'><img src = 'images/women/{$row[4]}' alt = '{$pid}'></div>";
+								 echo "<div class = 'text-center'><img src = 'images/women/{$row[4]}' alt = '{$pid}' style = 'width:100%;'><br>{$row[2]}</div>";
 							else if($row[1][0]=='3')
-								 echo "<div class = 'box'><img src = 'images/books/{$row[4]}' alt = '{$pid}'></div>";
+								 echo "<div class = 'text-center'><img src = 'images/books/{$row[4]}' alt = '{$pid}' style = 'width:100%;'><br>{$row[2]}</div>";
 							else if($row[1][0]=='4')
-								 echo "<div class = 'box'><img src = 'images/gadgets/{$row[4]}' alt = '{$pid}'></div>";
+								 echo "<div class = 'text-center'><img src = 'images/gadgets/{$row[4]}' alt = '{$pid}' style = 'width:100%;'><br>{$row[2]}</div>";
 							else if($row[1][0]=='5')
-								 echo "<div class = 'box'><img src = 'images/sports/{$row[4]}' alt = '{$pid}'></div>";
+								 echo "<div class = 'text-center'><img src = 'images/sports/{$row[4]}' alt = '{$pid}' style = 'width:100%;'><br>{$row[2]}</div>";
 						?>
-					</th>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td><?php echo $row[2]; ?></td>
-				</tr>
-				<tr>
-					<td>Price</td>
-					<td><b>Rs.<?php echo $row[3]; ?></td>
-				</tr>
-				<tr>
-					<td>Quantity</td>
-					<td><?php echo $quantity; ?></td>
-				</tr>
-				<tr>
-					<td>Product ID</td>
-					<td><?php echo $row[1]; ?></td>
-				</tr>
-				<tr>
-					<td>Total Prize</td>
-					<td><b><?php echo "Rs.",$total; ?></b></td>
-				</tr>
-				<tr>
-					<td>Address</td>
-					<td><?php echo $row1[0].'<br>';echo $row1[4]; ?></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" name="submit" class="btn btn-primary" value="Confirm Order"></td>
-				</tr>
-			</table>
+					</div>
+					<div class="col-md-7">
+						<div class="row">
+							<div class="col-md-4" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;">Cost: </p>
+							</div>
+							<div class="col-md-8" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;"><?php echo $row[3]; ?></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;">Quantity: </p>
+							</div>
+							<div class="col-md-8" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;"><?php echo $quantity; ?></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;">Total: </p>
+							</div>
+							<div class="col-md-8" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;"><?php echo "Rs. {$total}" ?></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;">Delivering to: </p>
+							</div>
+							<div class="col-md-8" style = "padding: 20px;padding-left:40px;">
+								<p style = "color: grey;"><?php echo $row1[0].'<br>';echo $row1[4]; ?></p>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<input type="submit" name="submit" class="btn btn-primary" value="Confirm Order">
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</form>
 			<br><br><br><br>
 		<!--</div>-->

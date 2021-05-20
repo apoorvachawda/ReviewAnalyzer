@@ -3,13 +3,11 @@
 	$pid = $_GET['pid'];
 	$login = $_GET['login'];
 	$username = $_GET['username'];
-	if($login==0 || $username=="Dummy")
+	if($login==0)
 		echo "<SCRIPT LANGUAGE='JavaScript'>
 				window.alert('Login to SHOP!!!')
 				window.location.href='sign-in.php'
 				</SCRIPT>";
-
-	include("login_header.php");
 
 	$conn = mysqli_connect("localhost","root","","ita_project");
 	mysqli_select_db($conn,"ita_project");
@@ -38,8 +36,6 @@
     	border-collapse: collapse;*/
     	padding: 10px;
     	max-width: 1000px;
-    	/*background-color: #7A97FF;*/
-    	background-color:  #FFFAF7;
     	font-family: Helvetica;
     	font-weight: bold;
 	}
@@ -103,7 +99,7 @@
 	}
 </style>
 </head>
-<body style = "background: #FFFAF7;">
+<body>
 	<br><br> 	
 		<form action="confirm-order.php?action=0" method="get">
 			<input type="hidden" name="pid" value="<?php echo $pid ?>">

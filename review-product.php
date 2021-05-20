@@ -28,34 +28,31 @@
 <HTML>
 <HEAD>
 <TITLE>Review Product</TITLE>
-<!--<link href="imageStyles.css" rel="stylesheet" type="text/css" />-->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css1/style2.css">
+
 <style>
 div.box  {
 	width: 500px;
 	height: auto;
-	/*border-style: solid;*/
-	border-radius: 15px;
-	/*border-color: grey;*/
+	border-radius: 7px;
 	padding: 20px;
 	margin: 5px;
 	box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
-	background-color: #FFF ;
+	background-color: #FFF;
 }
 
 div.box img {
 	width: 200px;
 	height: 200px;
-	margin-right: 10px;
-	-webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.5s;
-    text-align: right;
+	/* margin-right: 10px; */
+    text-align: center;
     align-content: right;
     align-items: right;
 }
 
-div.box img:hover {
-	transform: scale(1.2);
-}
 
 div.box h3 {
 	text-align: center;
@@ -89,12 +86,6 @@ div.box textarea {
 	width: 200px;
 	height: 200px;
 	padding: 35px;
-}
-
-body {
-	/*background-image: url(images/background1.jpg) ;*/
-	background-color: #7A97FF;
-	text-align: center;
 }
 
 </style>
@@ -138,7 +129,7 @@ body {
 			echo"<td><div class = 'box'><img src = 'images/{$category}/{$row1[4]}' alt = '{$row['pid']}'>
 			<h4><b>{$row['pname']}<b></h4>
 			<br>
-			<form action = 'review-submit.php?pid=$pid & pname = $pname & email=$email & username=$username' method = 'post'>
+			<form action = 'review-submit.php?pid=$pid&pname=$pname&email=$email&username=$username&login=$login' method = 'post'>
 			<textarea name='comment' rows='5' cols='40'></textarea><br>
 			<input type='submit' class='btn btn-primary' align='center' name='submit' value='Submit Review'></input></form></div></td>";
 			if($i%2==1){
@@ -150,10 +141,9 @@ body {
 ?>
 </table>
 </div>
-<br><br><br><br><br><br><br>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </BODY>
 </HTML>
-<?php
-	echo "<br>"; 
-	include("footer.php");
-?>

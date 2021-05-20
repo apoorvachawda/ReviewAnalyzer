@@ -1,66 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--<title>Online Shopping</title>-->
-<!--css-->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/ken-burns.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/animate.min.css" type="text/css" media="all" />
-<!--css-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="ONLINE SHOPPING" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--js-->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!--js-->
-<!--webfonts-->
-<link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<style type="text/css">body {
-  background-image: url(images/background.jpg) ; /* fallback for old browsers */
-  /*background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);*/
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
-}
-</style>
 
-<!--webfonts-->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css1/style2.css">
+
 </head>
 <body>
-	<!--header-->
-		<div class="header">
-			<div class="container">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-				<!---Brand and toggle get grouped for better mobile display-->
-						<div class="navbar-header">
-							<!-- <div class="navbar-brand">
-								<h2><a href="">Online Shopping</a></h2>
-							</div> -->
-						</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<nav class="link-effect-4" id="link-effect-4">
-								<ul class="nav navbar-nav">
-									<li><a href="home.html"><span data-hover="Home">Home</span></a></li>
-									<li><a href="sign-up.php"><span data-hover="Register">Register</span></a></li>
-									<li><a href="sign-in.php"><span data-hover="Login">Login</span></a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	<!--</div>-->
+	<!-- navbar begins here -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">ReviewAnalyzer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    	Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="men.php?login=0">Men</a>
+                        <a class="dropdown-item" href="women.php?login=0">Women</a>
+                        <a class="dropdown-item" href="sports.php?login=0">Sports</a>
+                        <a class="dropdown-item" href="gadgets.php?login=0">Gadgets</a>
+                        <a class="dropdown-item" href="books.php?login=0">Books</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sign-in.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sign-up.php">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ends here -->
 </body>
 </html>
 

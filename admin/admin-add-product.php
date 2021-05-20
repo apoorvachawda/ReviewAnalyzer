@@ -1,13 +1,5 @@
 <?php
 	session_start();
-	//if(isset($_SESSION('user'))) 
-		include("admin_login_header.php");
-	/*else{
-		echo("<SCRIPT LANGUAGE='JavaScript'
-			window.alert('Login Error!')
-			window.location.href='admin-login.php'
-			</SCRIPT>");
-	}*/
 	$conn = mysqli_connect("localhost","root","","ita_project");
 	if (mysqli_connect_errno())
 	{
@@ -43,144 +35,86 @@
 			window.location.href='admin-add-product.php'</script>";
 		}
 	}
-	//include("admin-side-menu.php");
-	//$action = $_GET['action'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Admin</title>
-<style type="text/css">
-	table,tr,td {
-		align-items: center;
-		text-align: center;
-		align-content: center;
-		border-style: solid;
-		border-color: grey;
-    	border-collapse: collapse;
-    	padding: 20px;
-    	max-width: 1000px;
-    	background-color: #b3f3ef;
-    	font-family: Helvetica;
-    	font-weight:normal;
-	}
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
-	th {
-		padding: 30px;
-	}
+	<!-- MD Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
-	td input {
-		margin-right: 10px;
-		margin-left: 10px; 
-	}
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<style type="text/css">
+		form{
+			background-color: #fff;
+			border-radius: 30px;
+			height: auto;
+			margin-top: 100px;
+			box-shadow: 3px 3px 6px 5px rgba(0,0,0,0.15);
+			padding: 30px;
+		}
+		body,html{
+			height: 1vh;
+		}
+		input{
+			background-color: transparent;
+			border: none;
+			border-bottom: solid 1px grey;
+		}
 
-	td p {
-		font-family: verdana;
-		font-weight: normal;
-		color: blue;
-		margin-left: 10px;
-	}
+	</style>
+	
 
-	td button {
-		padding: auto;
-		margin-left: 200px;
-		margin-right: auto;
-		align-items: center;
-		text-align: center;
-		align-content: center;
-		float: center;
-	}
-
-	div.box  {
-		width: 350px;
-		height: 350px;
-		border-style: solid;
-		border-radius: 15px;
-		border-color: grey;
-		padding: 25px;
-		margin: 5px;
-		text-align: center;
-		background-color: #d6ebd9;
-	}
-
-	div.box img {
-		width: 100%;
-		height: 100%;
-		-webkit-transition-duration: 0.4s; /* Safari */
-    	transition-duration: 0.5s;
-	}
-
-	div.box img:hover {
-		transform: scale(1.5);
-	}
-	div.box input {
-		text-align: center;
-		align-content: center;
-		float: center;
-		background-color: #4CAF50;
-		-webkit-transition-duration: 0.4s; /* Safari */
-   	 	transition-duration: 0.4s;
-	}
-
-	div.box input:hover {
-		background-color: #367477; 
-   	 	color: black;	
-	}
-
-	div.re {
-		font-family: verdana;
-		font-weight: normal;
-		color: black;
-	}
-</style>
 </head>
-<body>
-<br><br>
-		<form action="" method="post">
-			<table align="center">
-				<!--<tr>
-					<th rowspan="100">
-						<?php //echo "<div class = 'box'><img src = 'images/gadgets/{$image}' alt = '{$pid}'></div>" ?>
-						<h5 align="center">(hover over image to zoom in)</h6>
-					</th>
-				</tr>-->
-				<tr>
-					<td>Category<br>(Men-1; Women-2; Books-3; Gadgets-4; Sports-5)</td>
-					<td><input type="text" name="category"></td>
-				</tr>
-				<tr>
-					<td>Product ID</td>
-					<td><input type="text" name="pid"></td>
-				</tr>
-				<tr>
-					<td>Product Name</td>
-					<td><input type="text" name="pname"></td>
-				</tr>
-				<tr>
-					<td>Price</td>
-					<td><input type="text" name="price"></td>
-				</tr>
-				<tr>
-					<td>Image filename</td>
-					<td>
-						<input type="text" name="image">
-					</td>
-				</tr>
-				<tr>
-					<td>Description</td>
-					<td>
-						<input type="text" name="info">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<a href="ita-admin.php">
-						<button type="button" class="btn btn-danger">Go Back</button></a>
-						<button type="button" class="btn btn-primary">Reset</button>
-						<input type="submit" class="btn btn-success" name="submit" value="Add Product" align="center">
-					</td>
-				</tr>
-			</table>
-		</form>
+<body class = "aqua-gradient">
+	<div class="d-flex justify-content-center">
+		<form action="" method = "post">
+		<div class="row">
+			<h3 class = "ml-auto mr-auto p-3">Enter product details</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Category<br>(Men-1; Women-2; Books-3; Gadgets-4; Sports-5)</p></div>
+			<div class="col-md-6"><input type="text" name="category"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Product ID</p></div>
+			<div class="col-md-6"><input type="text" name="pid"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Product Name</p></div>
+			<div class="col-md-6"><input type="text" name="pname"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Price</p></div>
+			<div class="col-md-6"><input type="text" name="price"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Image filename</p></div>
+			<div class="col-md-6"><input type="text" name="image"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-6"><p>Description</p></div>
+			<div class="col-md-6"><input type="text" name="info"></div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-md-6">
+				<a href="ita-admin.php"><button type="button" class="btn btn-danger float-right">Back to Menu</button></a>
+			</div>
+			<div class="col-md-6">
+				<input type="submit" class="btn btn-success float-left" name="submit" value="Add Product" align="center">
+			</div>
+		</div>
+	</form>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

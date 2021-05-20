@@ -1,13 +1,12 @@
 <?php
 	//header("Cache-Control", "no-cache, no-store, must-revalidate");
 	session_start();
-		include("admin_login_header.php");
 	$conn = mysqli_connect("localhost","root","","ita_project");
 	if (mysqli_connect_errno())
 	{
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	$conn = mysqli_connect("localhost","root","");
+	$conn = mysqli_connect("localhost","root","", "ita_project");
 	mysqli_select_db($conn,"ita");
 	//$sql = "SELECT * FROM products where pid like '1%' ORDER BY pid "; 
 	$sql = "select * from reviews";
@@ -16,108 +15,42 @@
 <HTML>
 <HEAD>
 <TITLE>Review Monitoring</TITLE>
-<style>
 
-table,tr,td {
-		border-style: solid;
-		border-color: grey;
-    	border-collapse: collapse;
-    	padding: 10px;
-    	width: auto;
-    	background-color: #fff;
-    	font-family: Helvetica;
-    	font-weight: normal;
-    	align-items: center;
-    	align-content: center;
-	}
+<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
-	th {
-		border-style: solid;
-		border-color: darkgreen;
-		background-color: #49a03d;
-		font-family: Arial;
-    	font-weight: bold;
-    	text-align: center;
-		padding: 10px;
-	}
+	<!-- MD Bootstrap -->
+	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"> -->
 
-	td input {
-		margin-right: auto;
-		margin-left: 130px;
-		align-self: center;
-		align-content: center;
-	}
-
-	td p {
-		font-family: verdana;
-		font-weight: normal;
-		color: blue;
-	}
-	div.box  {
-		width: 350px;
-		height: 350px;
-		border-style: solid;
-		border-radius: 15px;
-		border-color: grey;
-		padding: 25px;
-		margin: 5px;
-		text-align: center;
-		background-color: #d6ebd9;
-	}
-
-	div.box img {
-		width: 100%;
-		height: 100%;
-		-webkit-transition-duration: 0.4s; /* Safari */
-    	transition-duration: 0.5s;
-	}
-
-	div.box img:hover {
-		transform: scale(1.5);
-	}
-	div.box input {
-		text-align: center;
-		align-content: center;
-		float: center;
-		background-color: #4CAF50;
-		-webkit-transition-duration: 0.4s; /* Safari */
-   	 	transition-duration: 0.4s;
-	}
-
-	div.box input:hover {
-		background-color: #367477; 
-   	 	color: black;	
-	}
-
-	div.re {
-		font-family: verdana;
-		font-weight: normal;
-		color: black;
-	}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+<style type="text/css">
+		h3{
+			text-align: center;
+			margin: 50px;
+		}
+		table{
+			width: 80%;
+			border-collapse: separate;
+			border-spacing: 0 40px;
+		}
 
 </style>
 
 </HEAD>
-<BODY bgcolor="#E6E6FA">
-<br><br>
-
-<div class="main">
-	<br><br>
-	<table align="center">
-
+<BODY>
+<h3>Review Monitoring</h3>
+<table align="center">
 		<tr>
-			<th><font color="white"><b>Name</td>
-			<th><font color="white"><b>Email</td>
-			<th><font color="white"><b>Product</td>
-			<th><font color="white"><b>Review</td>
-			<th><font color="white"><b>IP Address</td>
-			<th><font color="white"><b>Action</td>
+			<th><b>Name</b></th>
+			<th><b>Email</b></th>
+			<th><b>Product</b></th>
+			<th><b>Review</b></th>
+			<th><b>IP Address</b></th>
+			<th><b>Action</b></th>
 		</tr>
+
 
 		<?php 
 		while($row = mysqli_fetch_assoc($result))
@@ -130,8 +63,7 @@ table,tr,td {
 			<td><?php echo $row['pname']; ?></td>
 			<td><?php echo $row['review']; ?></td>
 			<td><?php echo $row['ip']; ?></td>
-			<td><a href="admin-dfr-confirm.php?rid=<?php echo $row['rid']; ?>"><button type="button" class="btn btn-link"><font color="red">Delete</font>
-			</button></a></td>
+			<td><a href="admin-dfr-confirm.php?rid=<?php echo $row['rid']; ?>"><button type="button" class="btn btn-outline-danger"><span class="fa fa-trash-alt"></span></button></a></td>
 		</tr>
 
 		<?php 
@@ -139,11 +71,15 @@ table,tr,td {
 		?>
 				
 		<tr>
-			<th colspan="10"><a href="ita-admin.php"><button type="button" class="btn btn-default">Go Back</button></a></th>
+			<th colspan="10"><a href="ita-admin.php"><button type="button" class="btn btn-primary">Back to Menu</button></a></th>
 		</tr>
-	</table>
-</div>
+	</table>		
 
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </BODY>
 </HTML>
 

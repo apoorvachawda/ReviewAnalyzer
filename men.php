@@ -1,10 +1,11 @@
 <?php
-	//header("Cache-Control", "no-cache, no-store, must-revalidate");
 	session_start();
 	$login = $_GET['login'];
 	$username = "Dummy";
 	if($login==0) 
+	{	
 		include("header.php");
+	}
 	else if($login==1 && isset($_SESSION["user"]))
 	{
 		$username = $_SESSION["user"];
@@ -12,7 +13,7 @@
 	}
 	$conn = mysqli_connect("localhost","root","","ita_project");
 	
-	mysqli_select_db($conn,"ita");
+	mysqli_select_db($conn,"ita_project");
 
 	//checking for connection error
 	if ($conn->connect_error) {
@@ -25,43 +26,50 @@
 ?>
 <HTML>
 <HEAD>
+
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- Custom CSS -->
+    <link rel="stylesheet" href="css1/style2.css">
+
+
 <TITLE>Men's Wear</TITLE>
 <style>
-div.box  {
+.main{
+	margin-top: 50px;
+}
+
+.box  {
 	width: 300px;
-	height: 430px;
-	/*border-style: solid;*/
-	border-radius: 15px;
-	/*border-color: grey;*/
+	height: 470px;
 	padding-top: 20px;
 	padding-right: 25px;
 	padding-left: 25px;
 	padding-bottom: 370px;
 	margin: 5px;
 	text-align: center;
-	/*background-color: #d6ebd9;*/
-	background-color:  #FFFAF7;
 
+}
+
+.box:hover{
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 div.box img {
 	width: 100%;
 	height: 230px;
-	-webkit-transition-duration: 0.3s; /* Safari */
-    transition-duration: 0.3s;
-    border-radius: 15px;
+
 }
 
-div.box img:hover {
-	transform: scale(1.2);
-}
 
 div.box h3 {
 	text-align: center;
 	font-family: arial;
 	padding-top: 20px; 
 }
-div.box h4 {
+div.box h5 {
 	text-align: center;
 	font-family: Times New Roman;
 	padding-top: 20px; 
@@ -72,14 +80,6 @@ div.box input {
 	align-content: center;
 	float: center;
 	margin-bottom: 30px;
-	background-color: #4CAF50;
-	-webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-}
-
-div.box input:hover {
-	background-color: #367477; 
-    color: white;	
 }
 
 .gallery {
@@ -88,68 +88,10 @@ div.box input:hover {
 	padding: 35px;
 }
 
-.sidenav {
-    height: relative;
-    width: 300px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    /*background-color: #458b3b;*/
-    overflow-x: hidden;
-    padding-top: 20px;
-    margin-top: 160px;
-    vertical-align: center;
-    color: #000;
-}
-
-.sidenav a {
-    padding: 10px 8px 10px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #000;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #000;
-}
-
-.main {
-    margin-left: 300px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-    text-align: center;
-}
-
-.sidenav h3 {
-    font-weight: bold;
-    color: white;
-    font-family: "Lato", sans-serif;
-    margin-left: 16px;
-    width:200px;
-    margin-bottom: 5px; 
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
-
 </style>
 
 </HEAD>
-<BODY style = "background: #FFFAF7">
-<br><br>
-
-<div class="sidenav">
-  <h3 style = "color: #000;">CATEGORIES</h3>
-  <a href="#">Men</a>
-  <a href="women.php?login=<?php echo $login; ?>">Women</a>
-  <a href="books.php?login=<?php echo $login; ?>">Books</a>
-  <a href="sports.php?login=<?php echo $login; ?>">Sports</a>
-  <a href="gadgets.php?login=<?php echo $login; ?>">Gadgets</a>
-</div>
+<BODY>
 
 <div class="main">
 <table align="center">
@@ -164,11 +106,11 @@ div.box input:hover {
 			echo"<tr>";
 		}
 		echo"<td><div class = 'box'><img src = 'images/men/{$row['image']}' alt = '{$row['pid']}'>
-		<h4><b>{$row['pname']}<b></h4>
+		<h5><b>{$row['pname']}<b></h5>
 		<h4 style='color: green;'>Rs.{$row['price']}</h4>
 		<br>
-		<form action = 'men_shop.php?pid=$pid & login=$login & username=$username' method = 'post'>
-		<input type='submit' class='btn btn-primary' style = 'background-color: #FFFAF7; border-style: solid; border-width: 2px; border-color: #2B2672; border-radius: 20px; width: 40%; color: #000;' align='center' name='{$pid}' value='Buy'></input></form></div></td>";
+		<form action = 'men_shop2.php?pid=$pid & login=$login & username=$username' method = 'post' class='d-flex justify-content-center'>
+		<input type='submit' class='btn btn-block btn-outline-primary' style = 'width: 35%;' name='{$pid}' value='Buy'></input></form></div></td>";
 		if($i%3==2){
 			echo"</tr>";
 		}
@@ -177,7 +119,23 @@ div.box input:hover {
 ?>
 </table>
 </div>
-
+<!-- footer begins here -->
+    <footer class="blog-footer bg-light d-flex flex-column align-items-center p-3">
+        <p>Lorem ipsum dolor sit amet</p>
+        <p><a href="index.html">Back to top</a></p>
+    </footer>
+    <!-- footer ends here -->
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </BODY>
 </HTML>
 
